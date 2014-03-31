@@ -1,4 +1,4 @@
 NLP
 ===
 
-NLTK on Science Fiction
+A basic demonstration of Natural Language Processing in action.
