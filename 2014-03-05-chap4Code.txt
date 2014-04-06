@@ -1,0 +1,24 @@
+This file is for adding the interesting code we find in our assigned chapters 1-4. Remember to comment on each piece of code so that we all know what it does. Also remember to make some cool combinations with the code you find (i.e. combining percentage code with the Freq distribution chart).
+
+#Chapter 1
+
+
+#Chapter 2
+
+
+#Chapter 3
+
+
+#Chapter 4
+
+Here is what I have so far.
+Note: I was on an online book that had all the chapters together, so some of this code may be in other chapters as well. If that is the case, feel free to delete these codes.
+
+Code 1: Average sentence length in the Brown Corpus by category
+# Here is a simple way to find the average length of a sentence in the news section of the Brown Corpus, followed by an equivalent version with list comprehension: calculation:
+>>> lengths = map(len, nltk.corpus.brown.sents(categories='news'))
+>>> sum(lengths) / len(lengths)
+21.7508111616
+>>> lengths = [len(w) for w in nltk.corpus.brown.sents(categories='news'))]
+>>> sum(lengths) / len(lengths)
+21.7508111616
