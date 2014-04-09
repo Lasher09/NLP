@@ -3,7 +3,7 @@ NLP
 
 A basic demonstration of Natural Language Processing in action.
 
-he MIT License (MIT)
+The MIT License (MIT)
 
 Copyright (c) [year] [fullname]
 
