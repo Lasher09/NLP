@@ -1,12 +1,74 @@
 This file is for adding the interesting code we find in our assigned chapters 1-4. Remember to comment on each piece of code so that we all know what it does. Also remember to make some cool combinations with the code you find (i.e. combining percentage code with the Freq distribution chart).
 
-#Chapter 1
+##Chapter 1
 
 
-#Chapter 2
+##Chapter 2
 
+# Lexical Diversity Calculator Function 
+def lexical_diversity(my_text_data): # Creates a new function called lexical_diversity
+  word_count = len(my_text_data) # counts number of words in text file
+  vocab_size = len(set(my_text_data)) # counts number of unique words in text file
+  diversity_score = word_count / vocab_size # divides total words by unique words
+  return diversity_score 
+  
+##Chapter 3
 
-#Chapter 3
+# Start session with following commands
+from __future__ import division
+import nltk, re, pprint
 
+# Tokenization
+tokens = nltk.word_tokenize(raw) # Renames tokenize function "tokens"
+type(tokens) # gets data type of tokens
+len(tokens)
+text = nltk.Text(tokens) # create an nltk text from list of tokens
 
-#Chapter 4
+# Cleaning text (removing project Gutenberg metadata)
+raw.find("PART I") # finds the beginning of the book
+5303
+raw.rfind("End of Project Gutenberg's Crime") # finds the end of the book
+1157681
+raw = raw[5303:1157681] # stores the cleaned text in vairable 'raw'
+raw.find("Part I") # test to see if text is clean (should be 0)
+
+# Accessing and Cleaning Web Text (for complex tasts use Beautiful Soup)
+from urllib import urlopen
+url = "http://..." # stores the url in the variable "url"
+html = urlopen(url).read() 
+
+nltk.clean_html() # an nltk function which takes and HTML string and returns raw text 
+raw = nltk.clean_html(html) # assigns nltk function to variable raw
+tokens = nltk.word_tokenize(raw) # tokenizes raw text
+
+# Reading local files
+f = open('document.txt') # stores the open command in the variable 'f' 
+raw = f.read() uses the read method on variable 'f' and stores it in variable 'raw'
+
+# Reading local files one line at a time
+f = open('document.txt', 'rU') # r means read, U means Universal (ignores different conventions for marking new lines)
+for line in f:
+  print line.strip() # a for loop that strips newline characters ('\n') from text
+  
+# Opening PDF files (udse pypdf library)
+
+# Opening MS Word files (use pywin32)
+
+# Translating text into unicode (decoding)
+nltk.data.find('file_path') # locates file
+  # This is a headache. After 2 hours of playing around with it, I quit (pg. 94).
+
+# Translating text out of unicode so it can be writted to a terminal (encoding)
+
+# NLTK build in stemmers 
+porter = nltk.PorterStemmer() # stores Porter Stemmer in variable 'porter'
+[porter.stem(t) for t in tokens] # calls variable 'porter' on tokens
+
+lancaster = nltk.LancasterStemmer()  # stores Lancaster Stemmer in variable 'lancaster'
+[lancaster.stem(t) for t in tokens] # calls variable 'lancaster' on tokens
+
+# Lemmatization
+wnl = WordNetLemmatizer() # stores Word Net Lemmatizer in variable 'wnl'
+[wnl.lemmatize(t) for t in tokens] # calls variable 'wnl' on tokens
+
+##Chapter 4
