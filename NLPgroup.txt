@@ -81,7 +81,7 @@ for line in f:
 nltk.data.find('file_path') # locates file
   # This is a headache. After 2 hours of playing around with it, I quit (pg. 94).
 
-# Translating text out of unicode so it can be writted to a terminal (encoding)
+# Translating text out of unicode so it can be written to a terminal (encoding)
 
 # NLTK build in stemmers 
 porter = nltk.PorterStemmer() # stores Porter Stemmer in variable 'porter'
