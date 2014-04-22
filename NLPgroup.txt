@@ -18,8 +18,19 @@ Here are some of my notes
 
 >>> 100 * text4.count('a') / len(text4) ##Percentage it shows up 
 
+>>> text4.dispersion_plot(["citizens", "democracy", "freedom", "duties", "America"]) ##Lexical dispersion plot. shows where words show up in the text in a chart
 
-I finished reading all of the chapter and i think this is all that i thought was cool or could really get to work. I'm also going to do some more work to try and get the other things that I had trouble with up and running. 
+##all of this next code goes together. it's to graph the distribution of the top 50 words used in the text
+
+>>> fdist1 = FreqDist(text1)
+>>> fdist1
+>>> vocabulary1 = fdist1.keys()
+>>> vocabulary1[:50]
+>>> fdist1['whale']
+>>> fdist1.plot(50, cumulative=True)
+
+
+I finished reading all of the chapter and i think this is all that i thought was cool or could really get to work. I've got it up and running now. Now I want to see if I can get the output from the graphs to save and output on the website or something like that. 
 
 #Chapter 2
 
