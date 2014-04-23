@@ -22,13 +22,10 @@ Note: I was on an online book that had all the chapters together, so some of thi
 
 >>> names = nltk.corpus.names
 >>> names.fileids()
-('female.txt', 'male.txt')
 >>> male_names = names.words('male.txt')
 >>> female_names = names.words('female.txt')
 >>> [w for w in male_names if w in female_names]
-['Abbey', 'Abbie', 'Abby', 'Addie', 'Adrian', 'Adrien', 'Ajay', 'Alex', 'Alexis',
-'Alfie', 'Ali', 'Alix', 'Allie', 'Allyn', 'Andie', 'Andrea', 'Andy', 'Angel',
-'Angie', 'Ariel', 'Ashley', 'Aubrey', 'Augustine', 'Austin', 'Averil', ..]
+
 
  	
 >>> cfd = nltk.ConditionalFreqDist((file, name[-1])
@@ -55,9 +52,7 @@ Note: I was on an online book that had all the chapters together, so some of thi
 >>> [w for w in wordlist if len(w) >= 6
 ...                      and obligatory in w
 ...                      and nltk.FreqDist(w) <= puzzle_letters]
-['glover', 'gorlin', 'govern', 'grovel', 'ignore', 'involver', 'lienor',
-'linger', 'longer', 'lovering', 'noiler', 'overling', 'region', 'renvoi',
-'revolving', 'ringle', 'roving', 'violer', 'virole']
+
 
 
 -------------- Code 3: % of words that are not stopwords
@@ -85,11 +80,8 @@ def unusual_words(text):
     return sorted(unusual)
     
 unusual_words(nltk.corpus.gutenberg.words('austen-sense.txt'))
-['abbeyland', 'abhorrence', 'abominably', 'abridgement', 'accordant', 'accustomary',...]
 unusual_words(nltk.corpus.nps_chat.words())
-['aaaaaaaaaaaaaaaaa', 'aaahhhh', 'abou', 'abourted', 'abs', 'ack', 'acros',...]
 unusual_words(nltk.corpus.inaugural.words('1801-Jefferson.txt'))
-['abuses', 'acknowledging', 'acquisitions', 'actions', 'administrations' ...]
 
 
 
@@ -99,11 +91,8 @@ unusual_words(nltk.corpus.inaugural.words('1801-Jefferson.txt'))
 # Remember to download the Indian.txt form the Corpora
 
 >>> nltk.corpus.cess_esp.words()
-['El', 'grupo', 'estatal', 'Electricit\xe9_de_France', ...]
 >>> nltk.corpus.floresta.words()
-['Um', 'revivalismo', 'refrescante', 'O', '7_e_Meio', ...]
 >>> nltk.corpus.udhr.words('Javanese-Latin1')[11:]
-[u'Saben', u'umat', u'manungsa', u'lair', u'kanthi', ...]
 >>> nltk.corpus.indian.words('hindi.pos')
 ['\xe0\xa4\xaa\xe0\xa5\x82\xe0\xa4\xb0\xe0\xa5\x8d\xe0\xa4\xa3', '\xe0\xa4\xaa\xe0\xa5\x8d\xe0\xa4\xb0\xe0\xa4\xa4\xe0\xa4\xbf\xe0\xa4\xac\xe0\xa4\x82\xe0\xa4\xa7', ...]
 >>> from nltk.corpus import udhr
@@ -124,9 +113,7 @@ unusual_words(nltk.corpus.inaugural.words('1801-Jefferson.txt'))
  	
 >>> from nltk.corpus import inaugural
 >>> inaugural.fileids()
-('1789-Washington.txt', '1793-Washington.txt', '1797-Adams.txt', ...)
 >>> [file[:4] for file in inaugural.fileids()]
-['1789', '1793', '1797', '1801', '1805', '1809', '1813', '1817', '1821', ...]
 
  	
 >>> cfd = nltk.ConditionalFreqDist((target, file[:4])
@@ -146,22 +133,15 @@ unusual_words(nltk.corpus.inaugural.words('1801-Jefferson.txt'))
 >>> import nltk, re, pprint
 >>> tree1 = nltk.Tree('NP', ['John'])
 >>> print tree1
-(NP John)
 >>> tree2 = nltk.Tree('NP', ['the', 'man'])
 >>> print tree2
-(NP the man)
 >>> tree3 = nltk.Tree('VP', ['saw', tree2])
 >>> tree4 = nltk.Tree('S', [tree1, tree3])
 >>> print tree4
-(S (NP John) (VP saw (NP the man)))
 >>> print tree4[1]
-(VP saw (NP the man))
 >>> tree4[1].node
-'VP'
 >>> tree4.leaves()
-['John', 'saw', 'the', 'man']
 >>> tree4[1,1,1]
-'man'
 >>> tree3.draw()   # The tree display window allows you to zoom in and out; to collapse and expand subtrees; and to print the graphical representation to a postscript file (for inclusion in a document).
 
 
@@ -222,7 +202,6 @@ for word in text:
 		longest = word			
 								
 logest							
-('unextinguishable')	
 
 #(have to do these together)
 
@@ -230,7 +209,6 @@ Find all the longest words:
 
 >>> maxlen = max(len(word) for word in text)
 >>> [word for word in text if len(word) == maxlen]
-['unextinguishable', 'transubstantiate', 'inextinguishable', 'incomprehensible']
 
 # Searching in a text:
 
@@ -242,12 +220,10 @@ For the first word in a set of works:
 ...             longest = word
 ... 
 >>> longest
-'antiphilosophists'
 
 Find all the longest words:
 >>> maxlen = max(len(word) for word in text)
 >>> [word for word in text if len(word) == maxlen]
-['antiphilosophists', 'misrepresentation', 'contradistinction', 'misrepresentation', 'instrumentalities', 'instrumentalities', 'instrumentalities', 'instrumentalities', 'instrumentalities', 'instrumentalities']
 
 
 
@@ -260,7 +236,6 @@ import urllib2
 >>> url = 'http://www.gutengerg.org/files/2554/2554.txt'
 >>> raw=urlopen(url).read()
 >>> type(raw)
-<type 'str'>
 >>> sort(len(raw))
 22282  #is in characters
 
@@ -287,9 +262,7 @@ You typed 17 words.
 >>> porter=nltk.PorterStemmer()
 >>> lancaster=nltk.LancasterStemmer()
 >>> [porter.stem(p) for p in text]
-['appl', 'call', 'indian', 'appli']
 >>> [lancaster.stem(p) for p in text]
-['appl', 'cal', 'ind', 'apply']
 
 
 
