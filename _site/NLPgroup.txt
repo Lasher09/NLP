@@ -1,0 +1,12 @@
+This file is for adding the interesting code we find in our assigned chapters 1-4. Remember to comment on each piece of code so that we all know what it does. Also remember to make some cool combinations with the code you find (i.e. combining percentage code with the Freq distribution chart).
+
+#Chapter 1
+
+
+#Chapter 2
+
+
+#Chapter 3
+
+
+#Chapter 4
