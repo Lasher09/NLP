@@ -1,0 +1,3 @@
+[submodule "simplehack"]
+	path = simplehack
+	url = git://github.com/silshack/simplehack.git

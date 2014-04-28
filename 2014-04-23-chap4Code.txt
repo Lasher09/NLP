@@ -1,0 +1,112 @@
+1. Longest word in a given text
+Sam is a high school student in an AP English class  and he needs to be able to find the longest words in a given text file (Shakespeare's Hamlet and Milton's Paradise Lost) and see what those words are so that he can prepare for his vocabulary test that he knows to have a lot of long words.
+	
+Needs a program that will 
+	• Read the given file
+	• Calculate the average word length in a given text
+	• Output the longest word/s
+
+# Looks for one word first word in a set of works:	
+# Searching in a corpuses
+text = nltk.corpus.gutenberg.words('milton-paradise.txt')					
+longest = ' '				
+for word in text:				
+    if len(word) > len(longest):
+	longest = word			
+								
+longest							
+
+#(have to do these together)
+#Find all the longest words:
+
+maxlen = max(len(word) for word in text)[word for word in text if len(word) == maxlen]
+
+
+2. This program allows a user to tokenize a webpage and get the most frequent words used in it.
+Jane is a copy writer who always needs to know what words are commonly used on the internet. So she wants a program that will, given a certain number, find the most frequently used words in any website and then see what those words are so that she can get a list of these words from any website when ever she wants.
+
+Project Capabilities
+Webpage Frequency program needs to be able to 
+	• read a URL
+	• tokenize all the words
+	• calculate the given number for the most used words
+	•  and then give the output of the word
+
+Program
+constitution = "http://www.archives.gov/exhibits/charters/constitution_transcript.html"
+def freq_words(url):
+    freqdist = nltk.FreqDist()
+    text = nltk.clean_url(url)
+    for word in nltk.word_tokenize(text):
+        freqdist.inc(word.lower())
+    return freqdist
+ 	
+fd = freq_words(constitution)
+print fd.keys()[:50]
+
+OR can use this code:
+constitution = "http://www.archives.gov/exhibits/charters/constitution_transcript.html"
+words = nltk.word_tokenize(nltk.clean_url(constitution))
+fd = nltk.FreqDist(word.lower() for word in words)
+fd.keys()[:50]
+
+
+3. Parts of Speech Tagger
+Mike is an ELS teacher <role/situation> and he wants to have a simple program that will parse sentences and call out the parts of speech<task/goal> so that I can show his students the parts of speech in an interesting fashion <outcome/motivation>
+
+Project Capabilities
+Needs a program
+	• Have a variable that holds any sentence the user inputs
+	• Tokenize the sentence
+	• Attach parts of speech to each word in the sentence
+	• Output the grammatically parsed sentence
+
+Program
+import nltk
+text = nltk.word_tokenize("And now for something completely different")
+nltk.pos_tag(text)
+
+
+4. Gender names and plot
+John is a sociologist and he wants to know about name patterns. Specifically he wants to have a list of names divided into two text files, one called "male.txt" and the other "female.txt" and then make a program that can check for patterns so that he can see what makes a name "male" or "female".
+	
+	
+Project Capabilities
+Needs a program to:
+	• Read two files
+	• Read the words in both files
+	• Output the names
+	• Plot: be able to compare the last letter and  output a plot that shows the results of names in by their last letters
+
+Program
+names = nltk.corpus.names
+names.fileids()
+male_names = names.words('male.txt')
+female_names = names.words('female.txt')
+[w for w in male_names if w in female_names]
+	
+cfd = nltk.ConditionalFreqDist((file, name[-1])
+	for file in names.fileids()
+	for name in names.words(file))
+	cfd.plot()    		# see  a neat plot
+	
+	
+5. Unusual words in a text
+Marie wants to write a program that can read a text for the most unusual words so that she can judge the reading level of that text.
+
+Program Capabilities
+Program needs to:
+	• Read all the lowercase words in a text
+	• Compare the words to that of the words in the text file
+
+
+Program
+def unusual_words(text):
+    text_vocab = set(w.lower() for w in text if w.isalpha())
+    english_vocab = set(w.lower() for w in nltk.corpus.words.words())
+    unusual = text_vocab.difference(english_vocab)
+    return sorted(unusual)
+
+unusual_words(nltk.corpus.gutenberg.words('austen-sense.txt'))
+unusual_words(nltk.corpus.nps_chat.words())
+unusual_words(nltk.corpus.inaugural.words('1801-Jefferson.txt'))
