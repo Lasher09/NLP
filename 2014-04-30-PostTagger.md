@@ -19,19 +19,15 @@ __Program capabilites:__
 __Code for WebpageFrequency:__
 
 ```
-
 import nltk
 text = nltk.word_tokenize("And now for something completely different")
 print nltk.pos_tag(text)
-
 ```						
 
 __Output:__
 
 ```
-
 [('And', 'CC'), ('now', 'RB'), ('for', 'IN'), ('something', 'NN'), ('completely', 'RB'), ('different', 'JJ')]
-
 ```
 
 _Note on the output:_
