@@ -7,14 +7,18 @@ title: Post
 ##Post 5:
 
 __Program:__ UnusualWords
-__Purpose and description:__ A program that can read a text for the most unusual words so that a user can judge the reading level of that text.
+
+__Purpose and description:__ This program  can read a text for the most unusual words in a text. This is great for judging the reading level of a text.
 
 __Program capabilites:__
 * Read all the lowercase words in a text
 * Compare the words in this text to the words in another text file holding a list of unusual words.
+* Output the resulting unusual words
 	
 	
 __Code for UnusualWords:__
+
+This example is going to look through the 1801 Inaugural Speeches, Specifically Jefferson's. What kind of wirds do you think might be there?
 
 ```
 import nltk
@@ -34,3 +38,5 @@ __Output:__
 ['abuses', 'acknowledging', 'acquisitions', 'actions', 'administrations', 'adoring', 'affairs', 'agonizing', 'alliances', 'angels', 'announced', 'assembled', 'authorities', 'banished', 'bestowed', 'billows', 'bled', 'blessings', 'bulwarks', 'burthened', 'called', 'cases', 'charged', 'citizens', 'committed', 'concerns', 'convulsions', 'councils', 'debts', 'decisions', 'degradations', 'delights', 'descendants', 'destined', 'destinies', ...]
 
 ```
+
+Are you surprised?
