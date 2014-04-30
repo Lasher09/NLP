@@ -4,12 +4,14 @@ author: jacobthill
 title: Scraping text from a webpage
 ---
 
-#Scraping text from a webpage
 
-This is a simple python script for extracting text from a webpage. It can be challenging to get all of the text formatted in the way you want, but this does a decent job. You should be able to find other resources on the web to adapt this script to your particular need. To get this to work, cut and paste the script into a text file, save it as name.py and run it from your terminal (python name.py). Before you start, make sure you have Beautiful Soup and urllib2 installed. 
+*Program:* Scraping text from a webpage
 
+*Purpose and Description:* This is a simple python script for extracting text from a webpage. It can be challenging to get all of the text formatted in the way you want, but this does a decent job. You should be able to find other resources on the web to adapt this script to your particular need. To get this to work, cut and paste the script into a text file, save it as name.py and run it from your terminal (python name.py). Before you start, make sure you have Beautiful Soup and urllib2 installed. 
 
+*Program Capabilities:* Can remove html, css, and javascript code from a webpage.
 
+*Code:*
 ```
 # modified from from http://stackoverflow.com/questions/22799990/beatifulsoup4-get-text-still-has-javascript
 
@@ -40,3 +42,5 @@ text = '\n'.join(chunk for chunk in chunks if chunk)
 
 print text
 ```
+
+*Output:* Output will vary depending on the content of the webpage.
