@@ -8,6 +8,7 @@ title: Post
 ##Post 1:
 
 __Program:__ LongestWord
+
 __Purpose and description the program:__ To find the longest word in a given text. This program will sift through a given text and find the longest word. This program will find the longest word in Milton's Paradise Lost text.
 	
 __Program capabilites:__
@@ -43,6 +44,7 @@ unextinguishable
 ##Post 2:
 
 __Program:__ WebpageFrequency
+
 __Purpose and description:__ This program allows a user to tokenize a webpage and get the most frequent words used in it.
 	
 __Program capabilites:__
@@ -82,6 +84,7 @@ __Output:__
 ##Post 3:
 
 __Program:__ POSTagger
+
 __Purpose and description:__ A simple program that will parse sentences and show the parts of speech.
 	
 __Program capabilites:__
@@ -121,6 +124,7 @@ _Note:
 ##Post 4:
 
 __Program:__ GenderNames
+
 __Purpose and description:__ A program that reads a list of names and will predict whether a name is a male or a female name. This program also will produce a graph to illustrate the frequency of names ending in certain letters and their predicted gender.
 	
 __Program capabilites:__
@@ -157,6 +161,7 @@ Format: ![Alt GenderMap](url)
 ##Post 5:
 
 __Program:__ UnusualWords
+
 __Purpose and description:__ A program that can read a text for the most unusual words so that a user can judge the reading level of that text.
 
 __Program capabilites:__
@@ -190,6 +195,7 @@ __Output:__
 ##Post 6:
 
 __Program:__ VocabularyHTML
+
 __Purpose and description:__ A program that takes out a list of words from a webpage in a list format for easier copy and pasting with no need to format further.. 
 
 __Program capabilites:__
