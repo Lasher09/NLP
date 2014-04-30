@@ -18,7 +18,7 @@ __Program capabilites:__
 	
 __Code for UnusualWords:__
 
-This example is going to look through the 1801 Inaugural Speeches, Specifically Jefferson's. What kind of wirds do you think might be there?
+This example is going to look through the 1801 Inaugural Speeches, Specifically Jefferson's. What kind of words do you think might be there?
 
 ```
 import nltk
@@ -29,14 +29,12 @@ def unusual_words(text):
     return sorted(unusual)
 
 print unusual_words(nltk.corpus.inaugural.words('1801-Jefferson.txt'))
-
 ```						
 
 __Output:__
 
 ```
 ['abuses', 'acknowledging', 'acquisitions', 'actions', 'administrations', 'adoring', 'affairs', 'agonizing', 'alliances', 'angels', 'announced', 'assembled', 'authorities', 'banished', 'bestowed', 'billows', 'bled', 'blessings', 'bulwarks', 'burthened', 'called', 'cases', 'charged', 'citizens', 'committed', 'concerns', 'convulsions', 'councils', 'debts', 'decisions', 'degradations', 'delights', 'descendants', 'destined', 'destinies', ...]
-
 ```
 
 Are you surprised?
