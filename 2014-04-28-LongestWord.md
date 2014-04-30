@@ -9,7 +9,7 @@ title: Post
 
 __Program:__ LongestWord
 
-__Purpose and description the program:__ This program will find the longest word in the given text:  Milton's Paradise Lost.
+__Purpose and description the program:__ This program will find the longest word in the given text. The example shown here is Milton's Paradise Lost. This program, like the UnusualWords program, is useful for ascertaining the reading level of a given text.
 	
 __Program capabilites:__
 * Read the given file
@@ -19,7 +19,6 @@ __Program capabilites:__
 __Code for LongestWord:__
 
 ```
-
 import nltk
 text = nltk.corpus.gutenberg.words('milton-paradise.txt')					
 longest = ' '				
@@ -28,14 +27,11 @@ for word in text:
 	longest = word			
 								
 print longest
-
 ```						
 
 __Output:__
 
 ```
-
 unextinguishable
-
 ```
 
