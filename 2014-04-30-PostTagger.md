@@ -8,7 +8,7 @@ title: Post
 
 __Program:__ PostTagger
 
-__Purpose and description:__ A simple program that will parse sentences and show the parts of speech.
+__Purpose and description:__ PostTagger is a simple program that will parse sentences and show the parts of speech. This can be useful for ESL instructors for breaking down sentences for their students.
 	
 __Program capabilites:__
 * Have a variable that holds any sentence the user inputs
