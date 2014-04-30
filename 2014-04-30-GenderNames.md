@@ -8,6 +8,7 @@ title: Post
 ##Post 4:
 
 __Program:__ GenderNames
+
 __Purpose and description:__ A program that reads a list of names and will predict whether a name is a male or a female name. This program also will produce a graph to illustrate the frequency of names ending in certain letters and their predicted gender.
 	
 __Program capabilites:__
