@@ -9,7 +9,7 @@ title: Post
 
 __Program:__ GenderNames
 
-__Purpose and description:__ A program that reads a list of names and will predict whether a name is a male or a female name. This program also will produce a graph to illustrate the frequency of names ending in certain letters and their predicted gender.
+__Purpose and description:__ A program that reads a list of names and will predict whether a name is a male or a female name. This program will also produce a graph to illustrate the frequency of names ending in certain letters and their predicted gender.
 	
 __Program capabilites:__
 * Read two files
@@ -39,3 +39,5 @@ __Output:__
 
 ![Markdown Logo](http://puu.sh/8rBAw.png)
 Format: ![Alt GenderMap](url)
+
+Here you can see the frequeuncy of the last letter of a name and how often they occur in male or female names. This graph is showing that names that end in 'a' are usually female names. Pretty neat!
