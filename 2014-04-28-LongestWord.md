@@ -4,10 +4,11 @@ author: laura
 title: Post
 ---
 
----------------------
+
 ##Post 1:
 
 __Program:__ LongestWord
+
 __Purpose and description the program:__ This program will find the longest word in the given text:  Milton's Paradise Lost.
 	
 __Program capabilites:__
