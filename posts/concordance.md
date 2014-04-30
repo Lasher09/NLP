@@ -4,7 +4,7 @@ author: ethan
 title: Text Concordance 
 ---
 
-*Program:* Concordance
+*Program:* Concordance 
 
 *Purpose:* This will help a user find where a word shows up in a text. 
 
