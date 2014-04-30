@@ -8,7 +8,7 @@ title: Post
 
 __Program:__ VocabularyHTML
 
-__Purpose and description:__  This program takes out selecte words from a webpage and outputs those words into a list format for easier copy and pasting with no need to format further. 
+__Purpose and description:__  This program takes out selecte words from a webpage and outputs those words into a list format for easier copy and pasting with no need to format further. This program is useful for gather quick lists of words, i.e.: vocabulary.
 
 __Program capabilites:__
 * Capture a webpage
