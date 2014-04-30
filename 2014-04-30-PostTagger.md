@@ -34,10 +34,10 @@ __Output:__
 
 ```
 
-_Note: 
+_Note on the output:_
 * CC = coordinating conjunction
 * RB = adverb
 * IN = preposition/subordinating conjunction
 * NN = noun
 * JJ = adjective
-* These tags and others can be found <a href="http://www.monlp.com/2011/11/08/part-of-speech-tags/"> here </a>._
+* These tags and others can be found <a href="http://www.monlp.com/2011/11/08/part-of-speech-tags/"> here </a>.
