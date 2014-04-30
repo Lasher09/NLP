@@ -196,7 +196,7 @@ __Output:__
 
 __Program:__ VocabularyHTML
 
-__Purpose and description:__ A program that takes out a list of words from a webpage in a list format for easier copy and pasting with no need to format further.. 
+__Purpose and description:__ A program that takes out a list of words from a webpage in a list format for easier copy and pasting with no need to format further.
 
 __Program capabilites:__
 * Capture a webpage
