@@ -7,7 +7,7 @@ title: Post
 ##Post 6:
 
 __Program:__ VocabularyHTML
-__Purpose and description:__ A program that takes out a list of words from a webpage in a list format for easier copy and pasting with no need to format further.. 
+__Purpose and description:__  This program takes out selecte words from a webpage and outputs those words into a list format for easier copy and pasting with no need to format further. 
 
 __Program capabilites:__
 * Capture a webpage
@@ -30,7 +30,6 @@ tokens=nltk.word_tokenize(raw)
 tokens=[x.replace(";","") for x in tokens]
 tokens = filter(None, tokens)
 print '\n'.join(tokens[200:300])
-
 ```						
 
 __Output:__
@@ -55,5 +54,4 @@ Brosiering
 Brummagem
 Bruxer
 Burgoo
-
 ```
