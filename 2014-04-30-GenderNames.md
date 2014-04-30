@@ -36,7 +36,7 @@ cfd = nltk.ConditionalFreqDist((file, name[-1])
 
 __Output:__
 
-![Markdown Logo](http://puu.sh/8rBAw.png)
+![GenderNamePlot]
 Format: ![Alt GenderMap](http://puu.sh/8rBAw.png)
 
 Here you can see the frequeuncy of the last letter of a name and how often they occur in male or female names. This graph is showing that names that end in 'a' are usually female names. Pretty neat!
