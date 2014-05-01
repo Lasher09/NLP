@@ -2,11 +2,462 @@ This file is for adding the interesting code we find in our assigned chapters 1-
 
 #Chapter 1
 
+Here are some of my notes
+
+>>> from nltk.book import * ##shows the books that are available in the corpus
+
+>>> text1.concordance("monstrous") ##Shows where the word monstrous appears in text1, moby dick
+
+>>> text4.dispersion_plot(["citizens", "democracy", "freedom", "duties", "America"]) ##Gives a plot of the word distribution. I actually couldn't get this to work on my computer. I spent an hour trying to get it running, but i couldn't. 
+
+>>> text3.generate() ##I thought this was kind of funny. generates random text from the actual text. 
+
+>>> len(text2) ##basic length of a document 
+
+>>> text3.count("smote") ##how many times it shows up in the document
+
+>>> 100 * text4.count('a') / len(text4) ##Percentage it shows up 
+
+>>> text4.dispersion_plot(["citizens", "democracy", "freedom", "duties", "America"]) ##Lexical dispersion plot. shows where words show up in the text in a chart
+
+##all of this next code goes together. it's to graph the distribution of the top 50 words used in the text
+
+>>> fdist1 = FreqDist(text1)
+>>> fdist1
+>>> vocabulary1 = fdist1.keys()
+>>> vocabulary1[:50]
+>>> fdist1['whale']
+>>> fdist1.plot(50, cumulative=True)
+
+
+I finished reading all of the chapter and i think this is all that i thought was cool or could really get to work. I've got it up and running now. Now I want to see if I can get the output from the graphs to save and output on the website or something like that. 
 
 #Chapter 2
+
+# Gutenberg Corpus
+NLTK includes a small selection of texts from the Project Gutenberg electronic text archive, which contains some 25,000 free electronic books, hosted at [Gutenburg](http://www.gutenberg.org/). Get the Python interpreter to load the NLTK package, then ask to see nltk.corpus.gutenberg.fileids(), the file identifiers in this corpus:
+
+```
+
+>>> import nltk
+>>> nltk.corpus.gutenberg.fileids()
+
+```
+Anyone could pick out the first of these texts—Emma by Jane Austen—and give it a short name, emma, then find out how many words it contains:
+
+```
+
+>>> emma = nltk.corpus.gutenberg.words('austen-emma.txt') 
+>>> len(emma)
+
+```
+
+# Brown Corpus
+The Brown Corpus was the first million-word electronic corpus of English, created in 1961 at Brown University. This corpus contains text from 500 sources, and the sources have been categorized by genre, such as news, editorial, and so on. Table 2-1 gives an example of each genre (for a complete list, see http://icame.uib.no/brown/bcm-los.html).
+
+# To specify particular categories or files to read:
+
+```
+
+>>> from nltk.corpus import brown
+>>> brown.categories()
+
+>>> brown.words(categories='news')
+
+>>> brown.words(fileids=['cg22'])
+
+>>> brown.sents(categories=['news', 'editorial', 'reviews'])
+
+```
+
+# To compare genres in their usage of modal verbs(AKA Stylistic Linguistic Inquiry):
+
+```
+>>> from nltk.corpus import brown
+>>> news_text = brown.words(categories='news')
+>>> fdist = nltk.FreqDist([w.lower() for w in news_text])
+>>> modals = ['can', 'could', 'may', 'might', 'must', 'will']
+>>> for m in modals:
+... print m + ':', fdist[m],
+
+```
+
+# Corpora for many languages:
+
+```
+>>> nltk.corpus.cess_esp.words()
+['El', 'grupo', 'estatal', 'Electricit\xe9_de_France', ...]
+>>> nltk.corpus.floresta.words()
+['Um', 'revivalismo', 'refrescante', 'O', '7_e_Meio', ...]
+>>> nltk.corpus.indian.words('hindi.pos') ['\xe0\xa4\xaa\xe0\xa5\x82\xe0\xa4\xb0\xe0\xa5\x8d\xe0\xa4\xa3', '\xe0\xa4\xaa\xe0\xa5\x8d\xe0\xa4\xb0\xe0\xa4\xa4\xe0\xa4\xbf\xe0\xa4\xac\xe0\xa4 \x82\xe0\xa4\xa7', ...]
+>>> nltk.corpus.udhr.fileids()
+['Abkhaz-Cyrillic+Abkh', 'Abkhaz-UTF8', 'Achehnese-Latin1', 'Achuar-Shiwiar-Latin1', 'Adja-UTF8', 'Afaan_Oromo_Oromiffa-Latin1', 'Afrikaans-Latin1', 'Aguaruna-Latin1', 'Akuapem_Twi-UTF8', 'Albanian_Shqip-Latin1', 'Amahuaca', 'Amahuaca-Latin1', ...]
+>>> nltk.corpus.udhr.words('Javanese-Latin1')[11:]
+[u'Saben', u'umat', u'manungsa', u'lair', u'kanthi', ...]
+
+```
+
+# Universal Declaration of Human Rights in over 300 languages:
+
+```
+
+>>>from nltk.corpus import udhr
+>>>languages = ['Chickasaw', 'English', 'German_Deutsch',
+...'Greenlandic_Inuktikut', 'Hungarian_Magyar', 'Ibibio_Efik'] cfd = nltk.ConditionalFreqDist(
+...(lang, len(word))
+...for lang in languages
+...for word in udhr.words(lang + '-Latin1'))
+>>>cfd.plot(cumulative=True)
+
+```
+
+# Loading Your Own Corpus: load them with the help of NLTK’s Plain textCorpusReader. Check the location of your files on your file system; in the following example, we have taken this to be the directory /usr/share/dict. Whatever the location, set this to be the value of corpus_root . The second parameter of the PlaintextCor pusReaderinitializer canbealistoffileids,like['a.txt', 'test/b.txt'],orapattern that matches all fileids, like '[abc]/.*\.txt'
+
+```
+
+>>> from nltk.corpus import PlaintextCorpusReader
+>>> corpus_root = '/usr/share/dict'
+>>> wordlists = PlaintextCorpusReader(corpus_root, '.*')
+>>> wordlists.fileids()
+['README', 'connectives', 'propernames', 'web2', 'web2a', 'words'] >>> wordlists.words('connectives')
+['the', 'of', 'and', 'to', 'a', 'in', 'that', 'is', ...]
+
+
+```
+
+￼# Conditional Frequency Distribution: A conditional fre- quency distribution is a collection of frequency distributions, each one for a different “condition.” The condition will often be the category of the text.
+￼cfdist = ConditionalFreqDist(pairs) - Create a conditional frequency distribution from a list of pairs Alphabetically sorted list of conditions
+cfdist.conditions() - Alphabetically sorted list of conditions
+cfdist[condition] - The frequency distribution for this condition
+cfdist[condition][sample] - Frequency for the given sample for this condition
+cfdist.tabulate() - Tabulate the conditional frequency distribution
+cfdist.tabulate(samples, conditions) - Tabulation limited to the specified samples and conditions Graphical plot of the conditional frequency distribution
+cfdist.plot() - Graphical plot of the conditional frequency distribution
+cfdist.plot(samples, conditions) - Graphical plot limited to the specified samples and conditions
+cfdist1 < cfdist2 - Test if samples in cfdist1 occur less frequently than in cfdist2
+
+# Funtion Methods
+
+```
+
+def plural(word):
+if word.endswith('y'):
+return word[:-1] + 'ies'
+elif word[-1] in 'sx' or word[-2:] in ['sh', 'ch']:
+return word + 'es' elif word.endswith('an'):
+return word[:-2] + 'en' else:
+return word + 's'
+>>> plural('fairy') 'fairies'
+>>> plural('woman') 'women'
+
+```
+
+Filtering out high-frequency words such as "the, to, and also" before further processing. Stopwords usually have little lexical content, and their presence in a text fails to distinguish it from other texts.
+
+```
+
+>>> from nltk.corpus import stopwords
+>>> stopwords.words('english')
+['a', "a's", 'able', 'about', 'above', 'according', 'accordingly', 'across', 'actually', 'after', 'afterwards', 'again', 'against', "ain't", 'all', 'allow', 'allows', 'almost', 'alone', 'along', 'already', 'also', 'although', 'always', ...]
+
+```
+
+# Sysnonyms, Hyponyms, etc.: WordNet makes it easy to navigate between concepts. For example, given a concept like motorcar, we can look at the concepts that are more specific—the (immediate) hyponyms.
+
+```
+
+>>> motorcar = wn.synset('car.n.01')
+>>> types_of_motorcar = motorcar.hyponyms()
+>>> types_of_motorcar[26]
+Synset('ambulance.n.01')
+>>> sorted([lemma.name for synset in types_of_motorcar for lemma in synset.lemmas]) ['Model_T', 'S.U.V.', 'SUV', 'Stanley_Steamer', 'ambulance', 'beach_waggon', 'beach_wagon', 'bus', 'cab', 'compact', 'compact_car', 'convertible',
+'coupe', 'cruiser', 'electric', 'electric_automobile', 'electric_car', 'estate_car', 'gas_guzzler', 'hack', 'hardtop', 'hatchback', 'heap', 'horseless_carriage', 'hot-rod', 'hot_rod', 'jalopy', 'jeep', 'landrover',
+'limo', 'limousine', 'loaner', 'minicar', 'minivan', 'pace_car', 'patrol_car', 'phaeton', 'police_car', 'police_cruiser', 'prowl_car', 'race_car', 'racer', 'racing_car', 'roadster', 'runabout', 'saloon', 'secondhand_car', 'sedan', 'sport_car', 'sport_utility', 'sport_utility_vehicle', 'sports_car', 'squad_car', 'station_waggon', 'station_wagon', 'stock_car', 'subcompact', 'subcompact_car', 'taxi', 'taxicab', 'tourer', 'touring_car', 'two-seater', 'used-car', 'waggon', 'wagon']
+
+```
 
 
 #Chapter 3
 
+# Start session with following commands
+from __future__ import division
+import nltk, re, pprint
+
+# Tokenization
+tokens = nltk.word_tokenize(raw) # Renames tokenize function "tokens"
+type(tokens) # gets data type of tokens
+len(tokens)
+text = nltk.Text(tokens) # create an nltk text from list of tokens
+
+# Cleaning text (removing project Gutenberg metadata)
+raw.find("PART I") # finds the beginning of the book
+5303
+raw.rfind("End of Project Gutenberg's Crime") # finds the end of the book
+1157681
+raw = raw[5303:1157681] # stores the cleaned text in vairable 'raw'
+raw.find("Part I") # test to see if text is clean (should be 0)
+
+# Accessing and Cleaning Web Text (for complex tasts use Beautiful Soup)
+from urllib import urlopen
+url = "http://..." # stores the url in the variable "url"
+html = urlopen(url).read() 
+
+nltk.clean_html() # an nltk function which takes and HTML string and returns raw text 
+raw = nltk.clean_html(html) # assigns nltk function to variable raw
+tokens = nltk.word_tokenize(raw) # tokenizes raw text
+
+# Reading local files
+f = open('document.txt') # stores the open command in the variable 'f' 
+raw = f.read() uses the read method on variable 'f' and stores it in variable 'raw'
+
+# Reading local files one line at a time
+f = open('document.txt', 'rU') # r means read, U means Universal (ignores different conventions for marking new lines)
+for line in f:
+  print line.strip() # a for loop that strips newline characters ('\n') from text
+  
+# Opening PDF files (udse pypdf library)
+
+# Opening MS Word files (use pywin32)
+
+# Translating text into unicode (decoding)
+nltk.data.find('file_path') # locates file
+  # This is a headache. After 2 hours of playing around with it, I quit (pg. 94).
+
+# Translating text out of unicode so it can be written to a terminal (encoding)
+
+# NLTK build in stemmers 
+porter = nltk.PorterStemmer() # stores Porter Stemmer in variable 'porter'
+[porter.stem(t) for t in tokens] # calls variable 'porter' on tokens
+
+lancaster = nltk.LancasterStemmer()  # stores Lancaster Stemmer in variable 'lancaster'
+[lancaster.stem(t) for t in tokens] # calls variable 'lancaster' on tokens
+
+# Lemmatization
+wnl = WordNetLemmatizer() # stores Word Net Lemmatizer in variable 'wnl'
+[wnl.lemmatize(t) for t in tokens] # calls variable 'wnl' on tokens
 
 #Chapter 4
+
+Here is what I have so far.
+Note: I was on an online book that had all the chapters together, so some of this code may be in other chapters as well. If that is the case, feel free to delete these codes.
+
+
+-------------- Code 1: Gender names and plot
+#The Names corpus, containing 8,000 first names categorized by gender. The male and female names are stored in separate files. Let's find names which appear in both files, i.e. names that are ambiguous for gender:
+
+>>> names = nltk.corpus.names
+>>> names.fileids()
+>>> male_names = names.words('male.txt')
+>>> female_names = names.words('female.txt')
+>>> [w for w in male_names if w in female_names]
+
+#this code plots out the names that are male and female. It shows patterns based on the last letter of the name. 	
+>>> cfd = nltk.ConditionalFreqDist((file, name[-1])
+...           for file in names.fileids()
+...           for name in names.words(file))
+>>> cfd.plot()    		# see  a neat plot
+
+
+-------------- Code 2: Program to search a wordlist to solve a word puzzle
+#Issue, tried other letters but keep getting '[]'
+
+# We use the FreqDist comparison method to check that the frequency of each letter in the candidate word is less than or equal to the frequency of the corresponding letter in the puzzle
+# Wold like to add a feature that gives the number of the resultant combinations
+# This is great for scrabble
+# Also if the user wants to add any words, all they need to do is open the "word.txt" and add them into there.
+
+>>> puzzle_letters = nltk.FreqDist('egivrvonl')
+>>> obligatory = 'r'
+>>> wordlist = nltk.corpus.words.words()
+>>> [w for w in wordlist if len(w) >= 6
+...                      and obligatory in w
+...                      and nltk.FreqDist(w) <= puzzle_letters]
+
+
+-------------- Code 3: % of words that are not stopwords
+# This function computes what fraction of words in a text are not in the stopwords list:
+
+>>> def content_fraction(text):
+...     stopwords = nltk.corpus.stopwords.words('english')
+...     content = [w for w in text if w.lower() not in stopwords]
+...     return 1.0 * len(content) / len(text)
+...
+>>> content_fraction(nltk.corpus.reuters.words())  #here we can swap out corpus'
+>>> content_fraction(nltk.corpus.state_union.words())  #tried on the union corpus
+
+
+-------------- Code 4: Unusual words in a text
+# This code gets a set of words from a text. 
+# We can use it to find unusual or mis-spelt words in a text corpus
+
+def unusual_words(text):
+    text_vocab = set(w.lower() for w in text if w.isalpha())
+    english_vocab = set(w.lower() for w in nltk.corpus.words.words())
+    unusual = text_vocab.difference(english_vocab)
+    return sorted(unusual)
+
+
+-------------- Code 5: Languages most common wordlengths
+# This uses a conditional frequency distribution to examine the differences in word lengths, for a selection of languages included in this corpus.
+# Remember to download the Indian.txt form the Corpora
+
+>>> nltk.corpus.cess_esp.words()
+>>> nltk.corpus.floresta.words()
+>>> nltk.corpus.udhr.words('Javanese-Latin1')[11:]
+>>> nltk.corpus.indian.words('hindi.pos')
+>>> from nltk.corpus import udhr
+>>> languages = ['Chickasaw', 'English', 'German_Deutsch', 'Greenlandic_Inuktikut', 'Hungarian_Magyar', 'Ibibio_Efik']
+>>> cfd = nltk.ConditionalFreqDist((lang, len(word))
+...     for lang in languages
+...     for word in udhr.words(lang + '-Latin1'))
+>>> cfd.plot(cumulative=True)   		# See a neat graph that shows average word-length
+
+
+
+-------------- Code 6: Plotting words used over time with the Inaugural Addresses
+# This code takes the years in the Addresses and plots them against target words to see their change in usage. 
+# Think about how to pair this with the word_percentage function
+# Important! Remember to change all cases of .file() to .fileids()
+ 	
+>>> from nltk.corpus import inaugural
+>>> inaugural.fileids()
+>>> [file[:4] for file in inaugural.fileids()]
+
+>>> cfd = nltk.ConditionalFreqDist((target, file[:4])
+...           for file in inaugural.fileids()
+...           for w in inaugural.words(file)
+...           for target in ['america', 'citizen']
+...           if w.lower().startswith(target))
+>>> cfd.plot()  							# Get to see an neat plot!
+
+
+-------------- Code 7: Drawing Trees
+# A tree is a set of connected nodes, each of which is labeled with a category. It common to use a 'family' metaphor to talk about the relationships of nodes in a tree: for example, s is the parent of vp; conversely vp is a daughter (or child) of s. Also, since np and vp are both daughters of s, they are also sisters. Here is an example of a tree:
+
+
+>>> import nltk
+>>> import nltk, re, pprint
+>>> tree1 = nltk.Tree('NP', ['John'])
+>>> print tree1
+>>> tree2 = nltk.Tree('NP', ['the', 'man'])
+>>> print tree2
+>>> tree3 = nltk.Tree('VP', ['saw', tree2])
+>>> tree4 = nltk.Tree('S', [tree1, tree3])
+>>> print tree4
+>>> print tree4[1]
+>>> tree4[1].node
+>>> tree4.leaves()
+>>> tree4[1,1,1]
+>>> tree3.draw()   # The tree display window allows you to zoom in and out; to collapse and expand subtrees; and to print the graphical representation to a postscript file (for inclusion in a document).
+
+
+-------------- Code 8: Ave of sentence in Brown corpus, by category
+# needs debugging
+#This code goes through a corpus and calculates the the average sentence.
+>>> lengths = map(len, nltk.corpus.brown.sents(categories='news'))
+>>> sum(lengths) / float(len(lengths))
+
+
+-------------- Code 9: See a graph of words in genres
+# Needs debugging
+
+>>> import nltk
+>>> colors = 'rgbcmyk' # red, green, blue, cyan, magenta, yellow, black
+>>> def bar_chart(categories, words, counts):
+...     "Plot a bar chart showing counts for each word by category"
+...     import pylab
+...     ind = pylab.arange(len(words))
+...     width = 1 / (len(categories) + 1)
+...     bar_groups = []
+...     for c in range(len(categories)):
+...             bars = pylab.bar(ind+c*width, counts[categories[c]], width,
+...                     color=colors[c % len(colors)])
+...             bar_groups.append(bars)
+...     pylab.xticks(ind+width, words)
+...     pylab.legend([b[0] for b in bar_groups], categories, loc='upper left')
+...     pylab.ylabel('Frequency')
+...     pylab.title('Frequency of Six Modal Verbs by Genre')
+...     pylab.show()
+... 
+>>> genres = ['news', 'religion', 'hobbies', 'government', 'adventure']
+>>> modals = ['can', 'could', 'may', 'might', 'must', 'will']
+>>> cfdist = nltk.ConditionalFreqDist(
+...     (genre, word)
+...     for genre in genres
+...     for word in nltk.corpus.brown.words(categories=genre)
+...     if word in modals)
+>>> counts={}
+>>> for genre in genres:
+...     counts[genre] = [cfdist[genre][word] for word in modals]
+...     
+... 
+>>> bar_chart(genres, modals, counts)
+
+
+
+-------------- Code 10: Find the longest word in a text or corpus
+# Looks for one word first word in a set of works:	
+# Searching in a corpuses
+text = nltk.corpus.gutenberg.words('milton-paradise.txt')					
+longest = ''				
+for word in text:				
+	if len(word) > len(longest):
+		longest = word			
+								
+logest							
+
+#(have to do these together)
+#Find all the longest words:
+
+>>> maxlen = max(len(word) for word in text)
+>>> [word for word in text if len(word) == maxlen]
+
+# Searching in a text:
+
+For the first word in a set of works:	
+>>> text = text4
+>>> longest = ''
+>>> for word in text:
+...     if len(word) > len(longest):
+...             longest = word
+... 
+>>> longest
+
+#Find all the longest words:
+>>> maxlen = max(len(word) for word in text)
+>>> [word for word in text if len(word) == maxlen]
+
+
+-------------- Code 11: Text from the web
+# resource: http://www.slideshare.net/pbpimpale/natural-language-toolkit-nltk-basics / slide#39
+# getting the type and length of characters in the online text
+import urllib
+import urllib2
+>>> url = 'http://www.gutengerg.org/files/2554/2554.txt'
+>>> raw=urlopen(url).read()
+>>> type(raw)
+>>> sort(len(raw))
+
+# getting the html from the online text
+
+>>> req = urllib2.Request(url, headers ={'User-Agent':'Chrome'})
+>>> raw = urllib2.urlopen(req).read()
+>>> response = urllib2.urlopen(request)
+>>> html = response.read()
+>>> print html
+
+
+-------------- Code 12: User input and tokenization
+# This tokenizes the user's input text.
+>>> s = raw_input('Enter some text: ')
+#Enter some text: <sample text>
+>>> print 'You typed', len(nltk.word_tokenize(s)), 'words.'
+
+
+-------------- Code 13: Stemming text
+# This stems all the words
+>>> text=['apples', 'called', 'indian', 'applying']
+>>> porter=nltk.PorterStemmer()
+>>> lancaster=nltk.LancasterStemmer()
+>>> [porter.stem(p) for p in text]
+>>> [lancaster.stem(p) for p in text]
