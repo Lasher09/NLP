@@ -4,9 +4,12 @@ author: ethan
 title: Lexical Dispersion
 ---
 
+<<<<<<< HEAD
 This code has been based off of code found here: http://nltk.googlecode.com/svn/trunk/doc/book/ch01.html#fig-inaugural
 Packages needed to run this program can be found here: http://matplotlib.org/
 
+=======
+>>>>>>> master
 *Program Name:* Lexical Text Dispersion 
 
 *Program Purpose:* The user wants to create a lexical dispersion plot that shows where words show up in the text in a chart. 
