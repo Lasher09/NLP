@@ -4,6 +4,9 @@ author: ethan
 title: Top 50
 ---
 
+This code has been based off of code found here: http://nltk.googlecode.com/svn/trunk/doc/book/ch01.html#fig-inaugural
+Packages needed to run this program can be found here: http://matplotlib.org/
+
 *Program Name:* Top 50
 
 *Program Purpose:* The user wants to generate a graph that shows a distribution of the top 50 words in the selected text. 
